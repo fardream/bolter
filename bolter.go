@@ -13,8 +13,10 @@ import (
 )
 
 // Terminal lines...
-const instructionLine = "> Enter bucket to explore (CTRL-X to quit, CTRL-B to go back, ENTER to go back to ROOT Bucket):"
-const goingBack = "> Going back..."
+const (
+	instructionLine = "> Enter bucket to explore (CTRL-X to quit, CTRL-B to go back, ENTER to go back to ROOT Bucket):"
+	goingBack       = "> Going back..."
+)
 
 func main() {
 	var file string
@@ -42,8 +44,8 @@ COPYRIGHT:
 	app.Name = "bolter"
 	app.Usage = "view boltdb file interactively in your terminal"
 	app.Version = "2.0.1"
-	app.Authors = []*cli.Author{
-		&cli.Author{
+	app.Authors = []cli.Author{
+		{
 			Name:  "Hasit Mistry",
 			Email: "hasitnm@gmail.com",
 		},
@@ -157,7 +159,6 @@ func (i *impl) initDB(file string) {
 }
 
 func (i *impl) updateLoc(bucket string, goBack bool) string {
-
 	// we've probably an invalid value and want to display
 	// ourselves again...
 	if bucket == i.cache {
